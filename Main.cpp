@@ -15,11 +15,9 @@ vector<string> split(const string& value, char delimiter) {
     vector<string> tokens;
     istringstream iss(value);
     string token;
-    while (getline(iss, token, delimiter)) {
-        if (!token.empty()) {
+    while (getline(iss, token, delimiter))
+        if (!token.empty()) 
             tokens.push_back(token);
-        }
-    }
     return tokens;
 }
 
@@ -29,18 +27,16 @@ vector<string> translateMorseToLatin(const string& message) {
 
     for (const string& morseWord : morseWords) {
         vector<string> morseLetters = split(morseWord, ' ');
-
+        
         string latinWord = "";
         for (const string& morseLetter : morseLetters) {
             auto it = morseTranslations.find(morseLetter);
-            if (it != morseTranslations.end()) {
+            if (it != morseTranslations.end()) 
                 latinWord += it->second;
-            }
         }
 
-        if (!latinWord.empty()) {
+        if (!latinWord.empty()) 
             latinWords.push_back(latinWord);
-        }
     }
 
     return latinWords;
